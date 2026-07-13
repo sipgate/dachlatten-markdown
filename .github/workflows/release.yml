@@ -39,15 +39,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release snapshot
-        id: release-snapshot
-        uses: actions/create-release@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: 0.1.${{github.run_number}}
-          release_name: 0.1.${{github.run_number}}
-          draft: false
-          prerelease: false
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "0.1.${{ github.run_number }}" \
+            --title "0.1.${{ github.run_number }}" \
+            --notes ""
 
       - name: Publish GitHub
         run: ./kotlin publish github
