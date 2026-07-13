@@ -1,3 +1,4 @@
+@file:Suppress("NO_EXPLICIT_VISIBILITY_IN_API_MODE_WARNING")
 package de.sipgate.dachlatten.markdown
 
 import androidx.compose.foundation.text.BasicText
@@ -9,7 +10,7 @@ import androidx.compose.ui.test.ExperimentalTestApi
 class MarkdownStringIntegrationTest {
 
     @Test
-    fun complexLinkWithUrlEncodedEncodedLink() = runComposeUiTest {
+    fun complexLinkWithUrlEncodedEncodedLink(): Unit = runComposeUiTest {
         val complexMdWithEncodedUrl =
             "[Why does the chicken cross the road?](https://help.satellite.me/hc/de/articles/360000449825-K%C3%B6nnt-ihr-den-Verifizierungscode-auch-per-E-Mail-schicken)"
         val parsedText = parseMarkdown(complexMdWithEncodedUrl)
