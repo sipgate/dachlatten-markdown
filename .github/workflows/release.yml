@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: release
+
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set Release Info
+        uses: cuchi/jinja2-action@v1.3.0
+        with:
+          template: publish.module-template.yaml.j2
+          output_file: publish.module-template.yaml
+        env:
+          PUBLISH_REPO: https://maven.pkg.github.com/${{ github.repository }}
+          PUBLISH_GROUP: de.sipgate.dachlatten
+          PUBLISH_VERSION: 0.1.${{github.run_number}}
+
+      - name: Run Build
+        run: ./kotlin build
+
+      - name: Run Tests
+        run: ./kotlin test
+
+      - name: Set up credentials
+        run: |
+          echo "github.username=sipgate" >> local.properties
+          echo "github.password=$GH_TOKEN" >> local.properties
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release snapshot
+        id: release-snapshot
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: 0.1.${{github.run_number}}
+          release_name: 0.1.${{github.run_number}}
+          draft: false
+          prerelease: false
+
+      - name: Publish GitHub
+        run: ./kotlin publish github

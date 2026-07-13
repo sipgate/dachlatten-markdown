@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "automerge": true,
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "matchDatasources": ["maven"],
+      "registryUrls": [
+        "https://maven.alphadev.net/releases",
+        "https://repo1.maven.org/maven2/"
+      ]
+    }
+  ]
+}

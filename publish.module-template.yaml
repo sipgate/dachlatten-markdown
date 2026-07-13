@@ -1,0 +1,15 @@
+repositories:
+  - id: github
+    url: https://maven.pkg.github.com/sipgate/dachlatten-markdown
+    resolve: false
+    publish: true
+    credentials:
+      file: local.properties
+      usernameKey: github.username
+      passwordKey: github.password
+
+settings:
+  publishing:
+    enabled: true
+    group: de.sipgate.federmappe
+    version: 0.0.0

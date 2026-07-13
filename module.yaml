@@ -1,0 +1,26 @@
+product:
+  type: lib
+  platforms:
+    - jvm
+    - android
+
+dependencies:
+  - $libs.jetbrains.markdown
+  - $compose.foundation
+  - $compose.ui
+
+test-dependencies:
+  - $compose.uiTest
+  - $compose.desktop.currentOs
+
+settings:
+  compose:
+    enabled: true
+  kotlin:
+    freeCompilerArgs:
+      - -Xexplicit-api=warning
+  publishing:
+    artifactId: dachlatten-markdown
+
+apply:
+  - publish.module-template.yaml
