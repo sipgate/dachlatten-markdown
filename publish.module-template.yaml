@@ -11,5 +11,5 @@ repositories:
 settings:
   publishing:
     enabled: true
-    group: de.sipgate.federmappe
+    group: de.sipgate.dachlatten
     version: 0.0.0
