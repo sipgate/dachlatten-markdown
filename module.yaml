@@ -21,6 +21,7 @@ settings:
       - -Xexplicit-api=warning
   publishing:
     artifactId: dachlatten-markdown
+    publishSources: true
 
 apply:
   - publish.module-template.yaml
