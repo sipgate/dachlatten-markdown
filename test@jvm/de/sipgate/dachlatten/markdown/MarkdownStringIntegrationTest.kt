@@ -3,7 +3,7 @@ package de.sipgate.dachlatten.markdown
 
 import androidx.compose.foundation.text.BasicText
 import kotlin.test.Test
-import androidx.compose.ui.test.runComposeUiTest
+import androidx.compose.ui.test.v2.runComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 
 @OptIn(ExperimentalTestApi::class)
