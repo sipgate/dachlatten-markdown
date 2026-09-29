@@ -1,5 +1,5 @@
 [versions]
-jetbrains-markdown = "0.7.15"
+jetbrains-markdown = "0.7.16"
 
 [libraries]
 jetbrains-markdown = { module = "org.jetbrains:markdown", version.ref = "jetbrains-markdown" }
