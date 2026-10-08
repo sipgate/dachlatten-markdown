@@ -56,11 +56,11 @@ public fun parseMarkdown(markdown: String, styles: MarkdownStyles = MarkdownStyl
         /*
          * Note: Because the AST is nested and has self-consistent offsets we have to apply all
          * relevant nodes to the tempString and then remove the Markdown control characters from
-         * the formatted String from end to start. Otherwise the offsets won't match and everything
+         * the formatted String from end to start. Otherwise, the offsets won't match and everything
          * breaks!
          */
         MarkdownParser(GFMFlavourDescriptor())
-            .buildMarkdownTreeFromString(markdown)
+            .buildMarkdownTreeFromString(markdown as CharSequence)
             .children
             .fastForEach { processNode(it, markdown, styles, tempNodesToRemoveAfter::add) }
     }
